@@ -123,7 +123,7 @@ export default function Hero() {
         <section className="min-h-screen flex justify-center bg-gradient-to-br from-gray-900 via-gray-800 to-black pt-16 md:pt-20">
             {/* Grid overlay */}
             <div className="absolute inset-0 bg-[linear-gradient(rgba(0,255,65,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(0,255,65,0.02)_1px,transparent_1px)] bg-[size:30px_30px] pointer-events-none"></div>
-            <div className="hero-terminal container mx-auto px-2 sm:px-4 max-w-5xl mt-0">
+            <div className="hero-terminal container mx-auto px-2 sm:px-4 max-w-5xl mt-0 text-sm sm:text-base">
                 <div className="mx-auto w-full max-w-[95vw] sm:max-w-full">
 
                     <div className="bg-black/90 rounded-2xl border border-gray-700 shadow-2xl overflow-hidden backdrop-blur-sm">
@@ -143,10 +143,10 @@ export default function Hero() {
 
                         <div
                             ref={terminalBodyRef}
-                            className="p-3 sm:p-6 font-mono text-[10px] sm:text-xs md:text-sm h-[450px] overflow-y-auto pt-6 sm:pt-8"
+                            className="p-3 sm:p-6 font-mono h-[450px] overflow-y-auto pt-6 sm:pt-8"
                             onClick={() => inputRef.current?.focus()}
                         >
-                            <pre className="text-green-400 text-[8px] sm:text-xs md:text-sm mb-6 leading-tight overflow-x-auto whitespace-pre-wrap">
+                            <pre className="text-green-400 text-[9px] sm:text-xs md:text-sm mb-6 leading-tight overflow-x-auto whitespace-pre-wrap">
                                 {asciiArt}
                             </pre>
 
@@ -172,7 +172,7 @@ export default function Hero() {
                                         type="text"
                                         value={inputValue}
                                         onChange={(e) => setInputValue(e.target.value)}
-                                        className="flex-1 bg-transparent outline-none text-[#00ff41] font-mono text-[10px] sm:text-xs md:text-sm"
+                                        className="flex-1 bg-transparent outline-none text-[#00ff41] font-mono"
                                         autoFocus
                                         spellCheck={false}
                                         disabled={isProcessing}
@@ -192,7 +192,7 @@ export default function Hero() {
                             key={btn.command}
                             onClick={() => handleButtonClick(btn.command)}
                             disabled={isProcessing}
-                            className="px-3 py-1.5 sm:px-4 sm:py-2 bg-gray-800 hover:bg-gray-700 rounded-full text-xs sm:text-sm text-gray-300 transition flex items-center gap-1.5 disabled:opacity-50"
+                            className="px-3 py-1.5 sm:px-4 sm:py-2 bg-gray-800 hover:bg-gray-700 rounded-full text-gray-300 transition flex items-center gap-1.5 disabled:opacity-50"
                         >
                             <span className="text-base sm:text-lg">{btn.icon}</span>
                             <span>{btn.label}</span>
@@ -200,7 +200,7 @@ export default function Hero() {
                     ))}
                 </div>
 
-                <p className="text-center text-gray-500 text-[10px] sm:text-xs mt-4">
+                <p className="text-center text-gray-500 mt-4">
                     💡 Ask anything • Click buttons for quick info
                 </p>
             </div>
