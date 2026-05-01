@@ -41,10 +41,12 @@ export default function Hero() {
 
     // Handle button clicks (static commands)
     const handleButtonClick = async (command: string) => {
+        // Blur the input to dismiss keyboard
+        inputRef.current?.blur();
+
         if (command === 'clear') {
             setHistory([]);
             setInputValue('');
-            inputRef.current?.focus();
             return;
         }
 
@@ -54,7 +56,6 @@ export default function Hero() {
                 output: generateHelpResponse()
             }]);
             setInputValue('');
-            inputRef.current?.focus();
             return;
         }
 
@@ -66,7 +67,6 @@ export default function Hero() {
             }]);
         }
         setInputValue('');
-        inputRef.current?.focus();
     };
 
     // Handle user typing (anything = AI)
