@@ -1,5 +1,6 @@
 // app/layout.tsx
 import type { Metadata } from 'next';
+import type { Viewport } from 'next'
 import { Inter, JetBrains_Mono } from 'next/font/google';
 import TopBar from '@/src/components/layout/TopBar';
 
@@ -89,12 +90,14 @@ export const metadata: Metadata = {
     statusBarStyle: "black-translucent",
   },
 
-  viewport: {
-    width: "device-width",
-    initialScale: 1,
-    maximumScale: 1,
-  },
+
 };
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 1,
+}
 
 export default function RootLayout({
   children,

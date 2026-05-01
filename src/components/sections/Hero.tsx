@@ -18,10 +18,7 @@ export default function Hero() {
             input: 'whoami',
             output: staticCommands.find(c => c.name === 'whoami')?.response.text || ''
         },
-        {
-            input: 'skills',
-            output: staticCommands.find(c => c.name === 'skills')?.response.text || ''
-        },
+
     ]);
     const [isProcessing, setIsProcessing] = useState(false);
     const inputRef = useRef<HTMLInputElement>(null);
@@ -123,10 +120,10 @@ export default function Hero() {
    ╚═╝    ╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═╝ ╚═════╝ `;
 
     return (
-        <section className="min-h-screen flex items-center justify-center bg-gradient-to-br from-gray-900 via-gray-800 to-black">
+        <section className="min-h-screen flex justify-center bg-gradient-to-br from-gray-900 via-gray-800 to-black pt-16 md:pt-20">
             {/* Grid overlay */}
             <div className="absolute inset-0 bg-[linear-gradient(rgba(0,255,65,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(0,255,65,0.02)_1px,transparent_1px)] bg-[size:30px_30px] pointer-events-none"></div>
-            <div className="hero-terminal container mx-auto px-2 sm:px-4 max-w-5xl mt-10">
+            <div className="hero-terminal container mx-auto px-2 sm:px-4 max-w-5xl mt-0">
                 <div className="mx-auto w-full max-w-[95vw] sm:max-w-full">
 
                     <div className="bg-black/90 rounded-2xl border border-gray-700 shadow-2xl overflow-hidden backdrop-blur-sm">

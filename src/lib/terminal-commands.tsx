@@ -18,18 +18,21 @@ export const staticCommands: Command[] = [
   {
     name: 'whoami',
     description: 'About me',
-    response: { text: `Graphic designer + full stack developer + amateur triathlete. I built a dog registry for mixed breeds (because purebreds have enough options and mutts rule), co-authored a book you're supposed to read TO your dog (yes, really), and I make websites. I have a sense of humor, slightly sarcastic, and I think dogs should be included in everything.` }
+    response: { text: `Graphic designer + full stack developer + amateur triathlete. I built a dog registry for mixed breeds (because purebreds have enough options and mutts rule), co-authored and illustrated a book you're supposed to read TO your dog (yes, really), and I make websites. I have a sense of humor, slightly sarcastic, and I think dogs should be included in everything.` }
   },
   {
     name: 'skills',
-    description: 'What I do',
+    description: 'What I do (allegedly)',
     response: {
       text: (
         <div className="space-y-1">
-          <div>💻 Full Stack Developer</div>
-          <div>📚 Children\'s book publishing</div>
-          <div>💻 React/Next.js development</div>
-          <div>🐾 Canine technology consulting</div>
+          <div>🎨 Graphic Design — Making things look good since before Canva existed</div>
+          <div>💻 Full Stack Development — I speak JavaScript, dogs speak treats. We communicate somehow.</div>
+          <div>🐕 Mixed-Breed Dog Registry — Because purebreds have enough clubs, mutts deserve love too</div>
+          <div>📚 Children's Book Author & Illustrator — "Toby Adopts a Hooman" — yes, you read it TO your dog</div>
+          <div>🏊‍♂️🚴‍♂️🏃‍♂️ Casual Triathlete — I swim, bike, and run. Slowly. But I finish.</div>
+          <div>🤖 AI Integration — I taught a computer to be sarcastic. It learned from the best.</div>
+          <div>☕ Professional Coffee Drinker — Required for all of the above</div>
         </div>
       )
     }
@@ -53,10 +56,10 @@ export const staticCommands: Command[] = [
     response: {
       text: (
         <div>
-          📧 Email: use chat button or contact form<br />
-          💬 Chat: Use the chat button below<br />
+          💬 Chat: Use the button below — I actually respond<br />
+          📧 Email: Nice try, bots. Not today. (Use chat or contact  instead)<br />
           🐦 X/Twitter: @miketurko<br />
-          💼 LinkedIn:  ugh
+          💼 LinkedIn: I'd rather swim with jellyfish. Literally. I'm a triathlete.
         </div>
       )
     }
@@ -65,14 +68,14 @@ export const staticCommands: Command[] = [
     name: 'toby',
     description: 'Who is Toby?',
     response: {
-      text: '🐕 Toby is my rescue dog and the inspiration for "Toby Adopts a Hooman and World Canine Union". He thinks he adopted me. He\'s probably right.'
+      text: '🐕 Toby is our rescue dog and the inspiration for "Toby Adopts a Hooman and World Canine Union". He thinks he adopted me. He\'s probably right.'
     }
   },
   {
     name: 'book',
     description: 'About my book',
     response: {
-      text: '📖 "Toby Adopts a Hooman" — A heartwarming tale of a dog who chooses his perfect human companion. Coming soon to Amazon.'
+      text: '📖 "Toby Adopts a Hooman" — A first-of-its-kind storytime book made for dogs and their humans. Toby is a scruffy stray with a heart-shaped patch — and one big dream: to find a human who truly gets him. Not just any human, but one who loves long walks, playful games, and belly rubs!'
     }
   },
   {
