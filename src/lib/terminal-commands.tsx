@@ -18,7 +18,7 @@ export const staticCommands: Command[] = [
   {
     name: 'whoami',
     description: 'About me',
-    response: { text: 'Mike Turko — Dog tech entrepreneur, children\'s book author, and full-stack developer.' }
+    response: { text: 'I just like to make things — websites, illustrations, stories, coding projects — anything that starts as an idea and ends up real. A designer, developer, and casual triathlete, I approach creativity like training: with curiosity, persistence, and the occasional laugh. My projects usually mix humor, heart, and clever details—and I always try to work a dog—or some other furry friend—into the mix.' }
   },
   {
     name: 'skills',
