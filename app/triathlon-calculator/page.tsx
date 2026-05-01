@@ -120,7 +120,6 @@ export default function TriathlonCalculatorPage() {
             <PageHero
                 title="Triathlon Time Calculator"
                 description="Calculate your finish time for Sprint, Olympic, 70.3, or Ironman"
-                gradient="from-blue-600 to-cyan-600"
                 icon={<TimerIcon className="w-10 h-10" />}
             />
 
@@ -134,7 +133,7 @@ export default function TriathlonCalculatorPage() {
                             <select
                                 value={raceType}
                                 onChange={(e) => setRaceType(e.target.value)}
-                                className="w-full px-4 py-2 rounded-xl border-2 border-gray-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all outline-none"
+                                className="w-full px-4 py-2 rounded-xl border-2 border-gray-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all outline-none  font-mono"
                             >
                                 <option value="sprint">Sprint Triathlon</option>
                                 <option value="olympic">Olympic Triathlon</option>
@@ -151,14 +150,14 @@ export default function TriathlonCalculatorPage() {
                                 value={swimPace}
                                 onChange={(e) => setSwimPace(e.target.value)}
                                 placeholder="mm:ss"
-                                className={getFieldClass(!!results.errors.swim)}
+                                className={`${getFieldClass(!!results.errors.swim)} font-mono`}
                             />
                             <p className="text-xs text-gray-500">Example: 2:30 = 2 minutes 30 seconds per 100 yards</p>
                             {results.errors.swim && <p className="text-sm text-red-600">{results.errors.swim}</p>}
                             <div className="bg-gray-50 rounded-xl p-3 mt-2">
                                 <span className="text-gray-600">
                                     {results.distances.swim} yd Swim Time:
-                                    <strong className="ml-2 text-gray-900">{results.swimTime}</strong>
+                                    <strong className="ml-2 text-gray-900  font-mono">{results.swimTime}</strong>
                                 </span>
                             </div>
                         </div>
@@ -171,7 +170,7 @@ export default function TriathlonCalculatorPage() {
                                 value={t1Time}
                                 onChange={(e) => setT1Time(e.target.value)}
                                 placeholder="mm:ss"
-                                className={getFieldClass(!!results.errors.t1)}
+                                className={`${getFieldClass(!!results.errors.t1)} font-mono`}
                             />
                             {results.errors.t1 && <p className="text-sm text-red-600">{results.errors.t1}</p>}
                         </div>
@@ -184,13 +183,13 @@ export default function TriathlonCalculatorPage() {
                                 step="0.1"
                                 value={bikeSpeed}
                                 onChange={(e) => setBikeSpeed(e.target.value)}
-                                className={getFieldClass(!!results.errors.bike)}
+                                className={`${getFieldClass(!!results.errors.bike)} font-mono`}
                             />
                             {results.errors.bike && <p className="text-sm text-red-600">{results.errors.bike}</p>}
                             <div className="bg-gray-50 rounded-xl p-3 mt-2">
                                 <span className="text-gray-600">
                                     {results.distances.bike} mi Bike Time:
-                                    <strong className="ml-2 text-gray-900">{results.bikeTime}</strong>
+                                    <strong className="ml-2 text-gray-900  font-mono">{results.bikeTime}</strong>
                                 </span>
                             </div>
                         </div>
@@ -203,7 +202,7 @@ export default function TriathlonCalculatorPage() {
                                 value={t2Time}
                                 onChange={(e) => setT2Time(e.target.value)}
                                 placeholder="mm:ss"
-                                className={getFieldClass(!!results.errors.t2)}
+                                className={`${getFieldClass(!!results.errors.t2)} font-mono`}
                             />
                             {results.errors.t2 && <p className="text-sm text-red-600">{results.errors.t2}</p>}
                         </div>
@@ -216,14 +215,14 @@ export default function TriathlonCalculatorPage() {
                                 value={runPace}
                                 onChange={(e) => setRunPace(e.target.value)}
                                 placeholder="mm:ss"
-                                className={getFieldClass(!!results.errors.run)}
+                                className={`${getFieldClass(!!results.errors.run)} font-mono`}
                             />
                             <p className="text-xs text-gray-500">Example: 8:00 = 8 minutes per mile</p>
                             {results.errors.run && <p className="text-sm text-red-600">{results.errors.run}</p>}
                             <div className="bg-gray-50 rounded-xl p-3 mt-2">
                                 <span className="text-gray-600">
                                     {results.distances.run} mi Run Time:
-                                    <strong className="ml-2 text-gray-900">{results.runTime}</strong>
+                                    <strong className="ml-2 text-gray-900  font-mono">{results.runTime}</strong>
                                 </span>
                             </div>
                         </div>
@@ -232,7 +231,7 @@ export default function TriathlonCalculatorPage() {
                         <div className="pt-4 border-t-2 border-gray-100">
                             <div className="bg-gradient-to-r from-blue-600 to-cyan-600 rounded-xl p-4 text-center">
                                 <p className="text-white/80 text-sm mb-1">Estimated Finish Time</p>
-                                <p className="text-white text-3xl font-bold tracking-wider">{results.totalTime}</p>
+                                <p className="text-white text-3xl font-bold tracking-wider font-mono">{results.totalTime}</p>
                                 <p className="text-white/60 text-xs mt-2">
                                     for {raceNames[raceType]}
                                 </p>

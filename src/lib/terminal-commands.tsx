@@ -18,7 +18,7 @@ export const staticCommands: Command[] = [
   {
     name: 'whoami',
     description: 'About me',
-    response: { text: 'I just like to make things — websites, illustrations, stories, coding projects — anything that starts as an idea and ends up real. A designer, developer, and casual triathlete, I approach creativity like training: with curiosity, persistence, and the occasional laugh. My projects usually mix humor, heart, and clever details—and I always try to work a dog—or some other furry friend—into the mix.' }
+    response: { text: `Graphic designer + full stack developer + amateur triathlete. I built a dog registry for mixed breeds (because purebreds have enough options and mutts rule), co-authored a book you're supposed to read TO your dog (yes, really), and I make websites. I have a sense of humor, slightly sarcastic, and I think dogs should be included in everything.` }
   },
   {
     name: 'skills',
@@ -26,7 +26,7 @@ export const staticCommands: Command[] = [
     response: {
       text: (
         <div className="space-y-1">
-          <div>🐕 Dog registry systems</div>
+          <div>💻 Full Stack Developer</div>
           <div>📚 Children\'s book publishing</div>
           <div>💻 React/Next.js development</div>
           <div>🐾 Canine technology consulting</div>
@@ -40,7 +40,7 @@ export const staticCommands: Command[] = [
     response: {
       text: (
         <div className="space-y-2">
-          <div><strong>📖 "Toby Adopts a Hooman"</strong> — Children's book coming soon</div>
+          <div><strong>📖 "Toby Adopts a Hooman"</strong> — Children's book made for dogs</div>
           <div><strong>🐕 World Canine Union</strong> — Modern dog registry platform</div>
           <div><strong>💼 Freelance</strong> — Full-stack development available</div>
         </div>
@@ -53,10 +53,10 @@ export const staticCommands: Command[] = [
     response: {
       text: (
         <div>
-          📧 Email: mike@worldcanineunion.org<br />
+          📧 Email: use chat button or contact form<br />
           💬 Chat: Use the chat button below<br />
           🐦 X/Twitter: @miketurko<br />
-          💼 LinkedIn: /in/miketurko
+          💼 LinkedIn:  ugh
         </div>
       )
     }
@@ -65,7 +65,7 @@ export const staticCommands: Command[] = [
     name: 'toby',
     description: 'Who is Toby?',
     response: {
-      text: '🐕 Toby is my rescue dog and the inspiration for "Toby Adopts a Hooman". He thinks he adopted me. He\'s probably right.'
+      text: '🐕 Toby is my rescue dog and the inspiration for "Toby Adopts a Hooman and World Canine Union". He thinks he adopted me. He\'s probably right.'
     }
   },
   {
@@ -79,7 +79,7 @@ export const staticCommands: Command[] = [
     name: 'wcu',
     description: 'World Canine Union',
     response: {
-      text: '🐕 World Canine Union is a modern dog registry platform helping breeders, owners, and canine professionals connect and manage pedigrees.'
+      text: '🐕 World Canine Union is a modern dog registry born from a simple truth: every dog deserves to be celebrated. We started with a love for those beautiful mixed breeds that don`t fit traditional categories — the dogs with mismatched ears, surprising color patterns, and personalities that defy description. Each one tells a unique story, and we wanted to create a place where those stories could shine.'
     }
   }
 ];
@@ -112,16 +112,21 @@ export const actionButtons = [
 
 // Help command content (auto-generated from commands)
 export const generateHelpResponse = () => {
-  const allCommands = [...staticCommands, ...aiCommands];
   return (
-    <div className="space-y-1">
-      {allCommands.map(cmd => (
-        <div key={cmd.name}>
-          <span className="text-green-400">{cmd.name}</span>
-          <span className="text-gray-500 ml-2">— {cmd.description}</span>
+    <div className="space-y-2">
+      <div className="text-yellow-400 text-sm font-bold">🤖 How to use this terminal:</div>
+
+      <div className="text-gray-300 text-xs space-y-1">
+        <div>• <span className="text-green-400">Type anything</span> — My AI assistant will respond naturally</div>
+        <div>• <span className="text-green-400">Click any button below</span> — Get quick answers about me, my skills, projects, book, or dog registry</div>
+        <div>• <span className="text-green-400">Clear button</span> — Wipes the screen clean</div>
+      </div>
+
+      <div className="mt-2 pt-2 border-t border-gray-700">
+        <div className="text-gray-400 text-xs">
+          💡 Just start typing. Try: <span className="text-green-300">"What do you do?"</span>
         </div>
-      ))}
-      <div className="mt-2 text-gray-500 text-xs">Tip: Type 'ask [your question]' for AI-powered answers</div>
+      </div>
     </div>
   );
 };
