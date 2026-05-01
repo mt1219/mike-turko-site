@@ -165,7 +165,7 @@ export default function Hero() {
                             </div>
 
                             <form onSubmit={handleSubmit} className="mt-3">
-                                <div className="flex items-center">
+                                <div className="flex items-center gap-2">
                                     <span className="text-green-400 mr-2">$</span>
                                     <input
                                         ref={inputRef}
@@ -178,6 +178,13 @@ export default function Hero() {
                                         disabled={isProcessing}
                                         placeholder={isProcessing ? "Thinking..." : "Ask me anything..."}
                                     />
+                                    <button
+                                        type="submit"
+                                        disabled={!inputValue.trim() || isProcessing}
+                                        className="px-3 py-1.5 bg-[#00ff41]/10 border border-[#00ff41] rounded-lg text-[#00ff41] text-xs hover:bg-[#00ff41]/20 transition disabled:opacity-50"
+                                    >
+                                        Send
+                                    </button>
                                 </div>
                             </form>
 
