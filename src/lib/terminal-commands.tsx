@@ -18,7 +18,7 @@ export const staticCommands: Command[] = [
   {
     name: 'whoami',
     description: 'About me',
-    response: { text: `Graphic designer + full stack developer + amateur triathlete. I built a dog registry for mixed breeds (because purebreds have enough options and mutts rule), co-authored and illustrated a book you're supposed to read TO your dog (yes, really), and I make websites. I have a sense of humor, slightly sarcastic, and I think dogs should be included in everything.` }
+    response: { text: `Graphic designer + full stack developer + amateur triathlete. I built a dog registry for mixed breeds (because purebreds have enough options and mutts rule), co-authored and illustrated a book you're supposed to read TO your dog (yes, really), and I make websites.` }
   },
   {
     name: 'skills',
@@ -26,13 +26,13 @@ export const staticCommands: Command[] = [
     response: {
       text: (
         <div className="space-y-1">
+          <div>⚡ <span className="text-[#00ff41]">Full Stack Development</span> — Public platforms (WCU) + personal tools (bookkeeping, memory bank, admin systems)</div>
           <div>🎨 Graphic Design — Making things look good since before Canva existed</div>
-          <div>💻 Full Stack Development — I speak JavaScript, dogs speak treats. We communicate somehow.</div>
-          <div>🐕 Mixed-Breed Dog Registry — Because purebreds have enough clubs, mutts deserve love too</div>
-          <div>📚 Children's Book Author & Illustrator — "Toby Adopts a Hooman" — yes, you read it TO your dog</div>
-          <div>🏊‍♂️🚴‍♂️🏃‍♂️ Casual Triathlete — I swim, bike, and run. Slowly. But I finish.</div>
-          <div>🤖 AI Integration — I taught a computer to be sarcastic. It learned from the best.</div>
-          <div>☕ Professional Coffee Drinker — Required for all of the above</div>
+          <div>🖥️ HTML/CSS/Tailwind — Hand-coded, responsive, no framework drama</div>
+          <div>🤖 AI Integration — DeepSeek API. JavaScript? Barely. Let the AI do the work.</div>
+          <div>🏊‍♂️🚴‍♂️🏃‍♂️ Triathlete — Podium? Never heard of her. Finish line? Yes.</div>
+          <div>☕ Professional Coffee Drinker — The real expertise</div>
+          <div className="text-gray-500 text-xs mt-2">⚠️ Next.js/React? I use it when I have to. This site is the exception, not the rule.</div>
         </div>
       )
     }
@@ -42,10 +42,28 @@ export const staticCommands: Command[] = [
     description: 'Current projects',
     response: {
       text: (
-        <div className="space-y-2">
-          <div><strong>📖 "Toby Adopts a Hooman"</strong> — Children's book made for dogs</div>
-          <div><strong>🐕 World Canine Union</strong> — Modern dog registry platform</div>
-          <div><strong>💼 Freelance</strong> — Full-stack development available</div>
+        <div className="space-y-3">
+          <div>
+            📖 <span className="text-[#00ff41] font-bold">"Toby Adopts a Hooman"</span>
+            <br />
+            A first-of-its-kind storytime book made for dogs and their humans. Read it TO your dog. Yes, really.
+            <br />
+            🔗 <a href="https://tobythestorydog.com" target="_blank" rel="noopener noreferrer" className="text-[#00ff41] hover:underline">tobythestorydog.com →</a>
+          </div>
+          <div>
+            🐕 <span className="text-[#00ff41] font-bold">World Canine Union</span>
+            <br />
+            A modern dog registry celebrating mixed breeds and rescues. Every dog deserves to be celebrated.
+            <br />
+            🔗 <a href="https://worldcanineunion.org" target="_blank" rel="noopener noreferrer" className="text-[#00ff41] hover:underline">worldcanineunion.org →</a>
+          </div>
+          <div>
+            💼 <span className="text-[#00ff41] font-bold">Freelance Development</span>
+            <br />
+            Laravel, PHP, custom web applications. Available for hire — let's build something.
+            <br />
+            📧 Use the chat button to reach me.
+          </div>
         </div>
       )
     }
@@ -75,16 +93,35 @@ export const staticCommands: Command[] = [
     name: 'book',
     description: 'About my book',
     response: {
-      text: '📖 "Toby Adopts a Hooman" — A first-of-its-kind storytime book made for dogs and their humans. Toby is a scruffy stray with a heart-shaped patch — and one big dream: to find a human who truly gets him. Not just any human, but one who loves long walks, playful games, and belly rubs!'
+      text: (
+        <div>
+          📖 <span className="text-[#00ff41] font-bold">"Toby Adopts a Hooman"</span><br />
+          A first-of-its-kind storytime book made for dogs and their humans.
+          Toby is a scruffy stray with a heart-shaped patch — and one big dream: to find a human who truly gets him.
+          Not just any human, but one who loves long walks, playful games, and belly rubs!
+          <br /><br />
+          🔗 <a href="https://tobythestorydog.com" target="_blank" rel="noopener noreferrer" className="text-[#00ff41] hover:underline">Learn more about Toby →</a>
+        </div>
+      )
     }
   },
   {
     name: 'wcu',
     description: 'World Canine Union',
     response: {
-      text: '🐕 World Canine Union is a modern dog registry born from a simple truth: every dog deserves to be celebrated. We started with a love for those beautiful mixed breeds that don`t fit traditional categories — the dogs with mismatched ears, surprising color patterns, and personalities that defy description. Each one tells a unique story, and we wanted to create a place where those stories could shine.'
+      text: (
+        <div>
+          🐕 <span className="text-[#00ff41] font-bold">World Canine Union</span><br />
+          A modern dog registry born from a simple truth: every dog deserves to be celebrated.
+          We started with a love for those beautiful mixed breeds that don't fit traditional categories
+          — the dogs with mismatched ears, surprising color patterns, and personalities that defy description.
+          Each one tells a unique story, and we wanted to create a place where those stories could shine.
+          <br /><br />
+          🔗 <a href="https://worldcanineunion.org" target="_blank" rel="noopener noreferrer" className="text-[#00ff41] hover:underline">Visit World Canine Union →</a>
+        </div>
+      )
     }
-  }
+  },
 ];
 
 // AI-ready commands (will call DeepSeek API)
@@ -106,8 +143,8 @@ export const actionButtons = [
   { command: 'whoami', icon: '👤', label: 'About' },
   { command: 'skills', icon: '⚡', label: 'Skills' },
   { command: 'projects', icon: '📁', label: 'Projects' },
-  { command: 'book', icon: '📖', label: 'Book' },
   { command: 'wcu', icon: '🐕', label: 'WCU' },
+  { command: 'book', icon: '📖', label: 'Book' },
   { command: 'contact', icon: '📧', label: 'Contact' },
   { command: 'clear', icon: '🗑️', label: 'Clear' },
   { command: 'help', icon: '❓', label: 'Help' }

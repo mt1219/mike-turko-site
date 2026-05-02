@@ -44,8 +44,7 @@ export default function ChatPanel({ onClose }: ChatPanelProps) {
 
     return (
         <div
-            className={`fixed inset-0 z-50 flex items-end justify-center bg-black/20 p-4 md:items-center transition-opacity duration-300 ${isClosing ? 'opacity-0' : 'opacity-100'
-                }`}
+            className={`fixed inset-0 z-50 flex items-end justify-center p-4 pb-20 md:pb-4 md:items-center transition-opacity duration-300 ${isClosing ? 'opacity-0' : 'opacity-100'}`}
             onClick={handleOverlayClick}
         >
             <div
