@@ -26,7 +26,7 @@ export const staticCommands: Command[] = [
     response: {
       text: (
         <div className="space-y-1">
-          <div>⚡ <span className="text-[#00ff41]">Full Stack Development</span> — Public platforms (WCU) + personal tools (bookkeeping, memory bank, admin systems)</div>
+          <div>⚡ <span className="text-[#00ff41]">Full Stack Development</span> — Public platforms (WCU) + personal tools (bookkeeping, memory bank, email, admin systems)</div>
           <div>🎨 Graphic Design — Making things look good since before Canva existed</div>
           <div>🖥️ HTML/CSS/Tailwind — Hand-coded, responsive, no framework drama</div>
           <div>🤖 AI Integration — DeepSeek API. JavaScript? Barely. Let the AI do the work.</div>
@@ -76,7 +76,6 @@ export const staticCommands: Command[] = [
         <div>
           💬 Chat: Use the button below — I actually respond<br />
           📧 Email: Nice try, bots. Not today. (Use chat or contact  instead)<br />
-          🐦 X/Twitter: @miketurko<br />
           💼 LinkedIn: I'd rather swim with jellyfish. Literally. I'm a triathlete.
         </div>
       )
@@ -100,7 +99,7 @@ export const staticCommands: Command[] = [
           Toby is a scruffy stray with a heart-shaped patch — and one big dream: to find a human who truly gets him.
           Not just any human, but one who loves long walks, playful games, and belly rubs!
           <br /><br />
-          🔗 <a href="https://tobythestorydog.com" target="_blank" rel="noopener noreferrer" className="text-[#00ff41] hover:underline">Learn more about Toby →</a>
+          🔗 <a href="https://tobythestorydog.com" target="_blank" rel="noopener noreferrer" className="text-[#00ff41] hover:underline">Learn more about Toby the Story Dog →</a>
         </div>
       )
     }
