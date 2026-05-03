@@ -106,13 +106,13 @@ export default function TriathlonCalculatorPage() {
     }, [raceType, swimPace, t1Time, bikeSpeed, t2Time, runPace]);
 
     const getFieldClass = (hasError: boolean) => `
-    w-full px-4 py-2 rounded-xl border-2 
-    ${hasError
-            ? 'border-red-500 bg-red-50 focus:border-red-600'
-            : 'border-gray-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-200'
+  w-full px-4 py-2 rounded-xl border-2 
+  ${hasError
+            ? 'border-red-500 bg-red-950/50 focus:border-red-500'
+            : 'border-gray-700 bg-black/50 focus:border-[#00ff41] focus:ring-2 focus:ring-[#00ff41]/20'
         }
-    transition-all outline-none
-  `;
+  transition-all outline-none text-white font-mono
+`;
 
     return (
         <div>
@@ -124,16 +124,17 @@ export default function TriathlonCalculatorPage() {
             />
 
             {/* Calculator Card */}
+            {/* Calculator Card */}
             <div className="container mx-auto px-4 max-w-2xl py-12">
-                <div className="bg-white rounded-2xl shadow-lg overflow-hidden">
+                <div className="bg-gradient-to-br from-gray-900 via-gray-800 to-black rounded-2xl border border-[#00ff41]/20 overflow-hidden">
                     <div className="p-6 space-y-6">
                         {/* Race Type Selector */}
                         <div className="space-y-2">
-                            <label className="block font-semibold text-gray-700">Race Type</label>
+                            <label className="block font-semibold text-gray-300">Race Type</label>
                             <select
                                 value={raceType}
                                 onChange={(e) => setRaceType(e.target.value)}
-                                className="w-full px-4 py-2 rounded-xl border-2 border-gray-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all outline-none  font-mono"
+                                className="w-full px-4 py-2 rounded-xl border-2 border-gray-700 bg-black/50 text-white focus:border-[#00ff41] focus:ring-2 focus:ring-[#00ff41]/20 transition-all outline-none font-mono"
                             >
                                 <option value="sprint">Sprint Triathlon</option>
                                 <option value="olympic">Olympic Triathlon</option>
@@ -144,95 +145,95 @@ export default function TriathlonCalculatorPage() {
 
                         {/* Swim */}
                         <div className="space-y-2">
-                            <label className="block font-semibold text-gray-700">Swim Pace (per 100 yards)</label>
+                            <label className="block font-semibold text-gray-300">Swim Pace (per 100 yards)</label>
                             <input
                                 type="text"
                                 value={swimPace}
                                 onChange={(e) => setSwimPace(e.target.value)}
                                 placeholder="mm:ss"
-                                className={`${getFieldClass(!!results.errors.swim)} font-mono`}
+                                className={`${getFieldClass(!!results.errors.swim)} font-mono bg-black/50 border-gray-700 text-white focus:border-[#00ff41]`}
                             />
                             <p className="text-xs text-gray-500">Example: 2:30 = 2 minutes 30 seconds per 100 yards</p>
-                            {results.errors.swim && <p className="text-sm text-red-600">{results.errors.swim}</p>}
-                            <div className="bg-gray-50 rounded-xl p-3 mt-2">
-                                <span className="text-gray-600">
+                            {results.errors.swim && <p className="text-sm text-red-500">{results.errors.swim}</p>}
+                            <div className="bg-gray-900/50 rounded-xl p-3 mt-2 border border-gray-800">
+                                <span className="text-gray-400">
                                     {results.distances.swim} yd Swim Time:
-                                    <strong className="ml-2 text-gray-900  font-mono">{results.swimTime}</strong>
+                                    <strong className="ml-2 text-[#00ff41] font-mono">{results.swimTime}</strong>
                                 </span>
                             </div>
                         </div>
 
                         {/* T1 */}
                         <div className="space-y-2">
-                            <label className="block font-semibold text-gray-700">T1 Transition Time</label>
+                            <label className="block font-semibold text-gray-300">T1 Transition Time</label>
                             <input
                                 type="text"
                                 value={t1Time}
                                 onChange={(e) => setT1Time(e.target.value)}
                                 placeholder="mm:ss"
-                                className={`${getFieldClass(!!results.errors.t1)} font-mono`}
+                                className={`${getFieldClass(!!results.errors.t1)} font-mono bg-black/50 border-gray-700 text-white focus:border-[#00ff41]`}
                             />
-                            {results.errors.t1 && <p className="text-sm text-red-600">{results.errors.t1}</p>}
+                            {results.errors.t1 && <p className="text-sm text-red-500">{results.errors.t1}</p>}
                         </div>
 
                         {/* Bike */}
                         <div className="space-y-2">
-                            <label className="block font-semibold text-gray-700">Bike Speed (mph)</label>
+                            <label className="block font-semibold text-gray-300">Bike Speed (mph)</label>
                             <input
                                 type="number"
                                 step="0.1"
                                 value={bikeSpeed}
                                 onChange={(e) => setBikeSpeed(e.target.value)}
-                                className={`${getFieldClass(!!results.errors.bike)} font-mono`}
+                                className={`${getFieldClass(!!results.errors.bike)} font-mono bg-black/50 border-gray-700 text-white focus:border-[#00ff41]`}
                             />
-                            {results.errors.bike && <p className="text-sm text-red-600">{results.errors.bike}</p>}
-                            <div className="bg-gray-50 rounded-xl p-3 mt-2">
-                                <span className="text-gray-600">
+                            {results.errors.bike && <p className="text-sm text-red-500">{results.errors.bike}</p>}
+                            <div className="bg-gray-900/50 rounded-xl p-3 mt-2 border border-gray-800">
+                                <span className="text-gray-400">
                                     {results.distances.bike} mi Bike Time:
-                                    <strong className="ml-2 text-gray-900  font-mono">{results.bikeTime}</strong>
+                                    <strong className="ml-2 text-[#00ff41] font-mono">{results.bikeTime}</strong>
                                 </span>
                             </div>
                         </div>
 
                         {/* T2 */}
                         <div className="space-y-2">
-                            <label className="block font-semibold text-gray-700">T2 Transition Time</label>
+                            <label className="block font-semibold text-gray-300">T2 Transition Time</label>
                             <input
                                 type="text"
                                 value={t2Time}
                                 onChange={(e) => setT2Time(e.target.value)}
                                 placeholder="mm:ss"
-                                className={`${getFieldClass(!!results.errors.t2)} font-mono`}
+                                className={`${getFieldClass(!!results.errors.t2)} font-mono bg-black/50 border-gray-700 text-white focus:border-[#00ff41]`}
                             />
-                            {results.errors.t2 && <p className="text-sm text-red-600">{results.errors.t2}</p>}
+                            {results.errors.t2 && <p className="text-sm text-red-500">{results.errors.t2}</p>}
                         </div>
 
                         {/* Run */}
                         <div className="space-y-2">
-                            <label className="block font-semibold text-gray-700">Run Pace (per mile)</label>
+                            <label className="block font-semibold text-gray-300">Run Pace (per mile)</label>
                             <input
                                 type="text"
                                 value={runPace}
                                 onChange={(e) => setRunPace(e.target.value)}
                                 placeholder="mm:ss"
-                                className={`${getFieldClass(!!results.errors.run)} font-mono`}
+                                className={`${getFieldClass(!!results.errors.run)} font-mono bg-black/50 border-gray-700 text-white focus:border-[#00ff41]`}
                             />
                             <p className="text-xs text-gray-500">Example: 8:00 = 8 minutes per mile</p>
-                            {results.errors.run && <p className="text-sm text-red-600">{results.errors.run}</p>}
-                            <div className="bg-gray-50 rounded-xl p-3 mt-2">
-                                <span className="text-gray-600">
+                            {results.errors.run && <p className="text-sm text-red-500">{results.errors.run}</p>}
+                            <div className="bg-gray-900/50 rounded-xl p-3 mt-2 border border-gray-800">
+                                <span className="text-gray-400">
                                     {results.distances.run} mi Run Time:
-                                    <strong className="ml-2 text-gray-900  font-mono">{results.runTime}</strong>
+                                    <strong className="ml-2 text-[#00ff41] font-mono">{results.runTime}</strong>
                                 </span>
                             </div>
                         </div>
 
                         {/* Total Time */}
-                        <div className="pt-4 border-t-2 border-gray-100">
-                            <div className="bg-gradient-to-r from-blue-600 to-cyan-600 rounded-xl p-4 text-center">
-                                <p className="text-white/80 text-sm mb-1">Estimated Finish Time</p>
-                                <p className="text-white text-3xl font-bold tracking-wider font-mono">{results.totalTime}</p>
-                                <p className="text-white/60 text-xs mt-2">
+                        <div className="pt-4 border-t border-gray-800">
+                            <div className="bg-[#00ff41]/10 border border-[#00ff41] rounded-xl p-4 text-center">
+                                <p className="text-[#00ff41]/80 text-sm mb-1">Estimated Finish Time</p>
+                                <p className="text-[#00ff41] text-3xl font-bold tracking-wider font-mono">{results.totalTime}</p>
+                                <p className="text-[#00ff41]/60 text-xs mt-2">
                                     for {raceNames[raceType]}
                                 </p>
                             </div>
@@ -240,7 +241,7 @@ export default function TriathlonCalculatorPage() {
                     </div>
                 </div>
 
-                <p className="text-center text-gray-400 text-xs mt-6">
+                <p className="text-center text-gray-500 text-xs mt-6">
                     Times are estimates. Actual race times may vary based on conditions, elevation, and other factors.
                 </p>
             </div>

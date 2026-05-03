@@ -8,7 +8,8 @@ export default function ContactForm() {
     const [formData, setFormData] = useState({
         name: '',
         email: '',
-        message: ''
+        message: '',
+        honeypot: ''  // ← Honeypot field
     });
     const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
     const [errorMessage, setErrorMessage] = useState('');
@@ -22,6 +23,15 @@ export default function ContactForm() {
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
+
+        // 🛡️ HONEYPOT CHECK - if honeypot has any value, it's a bot
+        if (formData.honeypot) {
+            console.log('Honeypot triggered - bot detected');
+            setStatus('success');
+            setFormData({ name: '', email: '', message: '', honeypot: '' });
+            return;
+        }
+
         setStatus('loading');
         setErrorMessage('');
 
@@ -40,7 +50,7 @@ export default function ContactForm() {
             if (error) throw error;
 
             setStatus('success');
-            setFormData({ name: '', email: '', message: '' });
+            setFormData({ name: '', email: '', message: '', honeypot: '' });
         } catch (error) {
             console.error('Contact form error:', error);
             setStatus('error');
@@ -49,7 +59,7 @@ export default function ContactForm() {
     };
 
     return (
-        <div className="bg-[#0a0a0a] rounded-2xl border border-[#00ff41]/20 p-6 md:p-8">
+        <div className="bg-gradient-to-br from-gray-900 via-gray-800 to-black rounded-2xl border border-[#00ff41]/20 p-6 md:p-8">
             {status === 'success' ? (
                 <div className="text-center py-8">
                     <div className="text-[#00ff41] text-4xl mb-4">✓</div>
@@ -66,6 +76,20 @@ export default function ContactForm() {
                 </div>
             ) : (
                 <form onSubmit={handleSubmit} className="space-y-5">
+                    {/* 🛡️ HONEYPOT FIELD - hidden from real users */}
+                    <div className="hidden">
+                        <label htmlFor="honeypot">Leave this empty</label>
+                        <input
+                            type="text"
+                            id="honeypot"
+                            name="honeypot"
+                            value={formData.honeypot}
+                            onChange={handleChange}
+                            tabIndex={-1}
+                            autoComplete="off"
+                        />
+                    </div>
+
                     <div>
                         <label className="block text-gray-300 mb-2 font-medium">Name</label>
                         <input
@@ -74,7 +98,7 @@ export default function ContactForm() {
                             value={formData.name}
                             onChange={handleChange}
                             required
-                            className="w-full px-4 py-2 bg-black/50 border border-gray-700 rounded-lg focus:outline-none focus:border-[#00ff41] text-white transition"
+                            className="w-full px-4 py-2 bg-black/50 border border-gray-700 rounded-lg focus:outline-none focus:border-[#00ff41] focus:ring-2 focus:ring-[#00ff41]/20 text-white transition"
                             placeholder="Your name"
                         />
                     </div>
@@ -87,7 +111,7 @@ export default function ContactForm() {
                             value={formData.email}
                             onChange={handleChange}
                             required
-                            className="w-full px-4 py-2 bg-black/50 border border-gray-700 rounded-lg focus:outline-none focus:border-[#00ff41] text-white transition"
+                            className="w-full px-4 py-2 bg-black/50 border border-gray-700 rounded-lg focus:outline-none focus:border-[#00ff41] focus:ring-2 focus:ring-[#00ff41]/20 text-white transition"
                             placeholder="your@email.com"
                         />
                     </div>
@@ -100,7 +124,7 @@ export default function ContactForm() {
                             onChange={handleChange}
                             required
                             rows={5}
-                            className="w-full px-4 py-2 bg-black/50 border border-gray-700 rounded-lg focus:outline-none focus:border-[#00ff41] text-white transition resize-none"
+                            className="w-full px-4 py-2 bg-black/50 border border-gray-700 rounded-lg focus:outline-none focus:border-[#00ff41] focus:ring-2 focus:ring-[#00ff41]/20 text-white transition resize-none"
                             placeholder="What would you like to say?"
                         />
                     </div>

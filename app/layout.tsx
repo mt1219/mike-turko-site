@@ -106,7 +106,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className="h-full">
-      <body className={`${inter.variable} ${jetbrains.variable} h-full flex flex-col bg-black`}>
+      <body className={`${inter.variable} ${jetbrains.variable} h-full flex flex-col`}>
         <TopBar />
         <main className="flex-1">{children}</main>
         <ConditionalFooter />
