@@ -10,13 +10,13 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-inter);
   --font-mono: var(--font-jetbrains);
-
+}  /* ← THIS BRACE WAS MISSING */
 
 /* Default body font - Inter */
 body {
   background: var(--background);
   color: var(--foreground);
-    font-family: var(--font-inter), 'Inter', system-ui, -apple-system, sans-serif;
+  font-family: var(--font-inter), 'Inter', system-ui, -apple-system, sans-serif;
 }
 
 /* Terminal text uses JetBrains Mono */
