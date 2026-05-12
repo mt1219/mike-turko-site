@@ -5,10 +5,20 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { Menu, X } from 'lucide-react';
 
-const menuItems = [
+// All menu items (for mobile dropdown)
+const allMenuItems = [
     { label: 'Home', href: '/' },
     { label: 'Triathlon Calc', href: '/triathlon-calculator' },
     { label: 'Contact', href: '/contact' },
+    { label: 'Admin', href: '/admin' },
+];
+
+// Only show these on desktop (outside hamburger)
+const desktopLinks = [
+    { label: 'Home', href: '/' },
+    { label: 'Triathlon Calc', href: '/triathlon-calculator' },
+    { label: 'Contact', href: '/contact' },
+    // Admin is NOT here - only in hamburger
 ];
 
 export default function TopBar() {
@@ -17,7 +27,6 @@ export default function TopBar() {
     const pathname = usePathname();
     const siteName = process.env.NEXT_PUBLIC_SITE_NAME || 'Mike Turko';
 
-    // Track scroll position
     useEffect(() => {
         const handleScroll = () => {
             setScrolled(window.scrollY > 20);
@@ -26,12 +35,10 @@ export default function TopBar() {
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
 
-    // Close menu when route changes
     useEffect(() => {
         setIsOpen(false);
     }, [pathname]);
 
-    // Prevent body scroll when menu is open
     useEffect(() => {
         if (isOpen) {
             document.body.style.overflow = 'hidden';
@@ -49,7 +56,6 @@ export default function TopBar() {
 
     return (
         <>
-            {/* Top bar - dynamic background based on scroll */}
             <div className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled
                 ? 'bg-black/90 backdrop-blur-md border-b border-[#00ff41]/20'
                 : 'bg-transparent'
@@ -58,39 +64,23 @@ export default function TopBar() {
                     <div className="flex items-center justify-between h-16">
                         {/* Logo */}
                         <Link href="/" className="flex items-center space-x-2">
-                            {/*          <div className="grid grid-cols-3 gap-0.5 shadow-[0_0_10px_#00ff41]">
-                                <div className="w-2 h-2 bg-[#00ff41]"></div>
-                                <div className="w-2 h-2 bg-[#00ff41]"></div>
-                                <div className="w-2 h-2 bg-[#00ff41]"></div>
-                                <div className="w-2 h-2 bg-[#00ff41]"></div>
-                                <div className="w-2 h-2 bg-black"></div>
-                                <div className="w-2 h-2 bg-[#00ff41]"></div>
-                                <div className="w-2 h-2 bg-[#00ff41]"></div>
-                                <div className="w-2 h-2 bg-[#00ff41]"></div>
-                                <div className="w-2 h-2 bg-[#00ff41]"></div>
-                            </div> */}
                             <div className="w-8 h-8 rounded-md border-2 border-[#00ff41] flex items-center justify-center shadow-[0_0_10px_#00ff41]">
                                 <span className="text-[#00ff41] text-sm font-bold">M</span>
                             </div>
-
-
-                            <span className={`font-semibold text-lg transition-colors duration-300 ${scrolled ? 'text-white' : 'text-white'
-                                }`}>
+                            <span className={`font-semibold text-lg transition-colors duration-300 text-white`}>
                                 {siteName}
                             </span>
                         </Link>
 
-                        {/* Right side: visible links + hamburger */}
+                        {/* Right side: desktop links + hamburger */}
                         <div className="flex items-center space-x-4">
+                            {/* Desktop links - NO ADMIN here */}
                             <nav className="hidden md:flex space-x-6">
-                                {menuItems.map((item) => (
+                                {desktopLinks.map((item) => (
                                     <Link
                                         key={item.href}
                                         href={item.href}
-                                        className={`transition ${scrolled
-                                            ? 'text-gray-300 hover:text-white'
-                                            : 'text-gray-300 hover:text-white'
-                                            } ${pathname === item.href ? 'text-[#00ff41]' : ''}`}
+                                        className={`transition text-gray-300 hover:text-white ${pathname === item.href ? 'text-[#00ff41]' : ''}`}
                                     >
                                         {item.label}
                                     </Link>
@@ -99,10 +89,7 @@ export default function TopBar() {
 
                             <button
                                 onClick={() => setIsOpen(!isOpen)}
-                                className={`p-2 rounded-lg transition ${scrolled
-                                    ? 'hover:bg-white/10 text-white'
-                                    : 'hover:bg-white/10 text-white'
-                                    }`}
+                                className="p-2 rounded-lg transition hover:bg-white/10 text-white"
                                 aria-label="Menu"
                             >
                                 {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
@@ -112,7 +99,7 @@ export default function TopBar() {
                 </div>
             </div>
 
-            {/* Mobile menu panel */}
+            {/* Mobile menu panel - shows ALL items including Admin */}
             {isOpen && (
                 <>
                     <div
@@ -138,16 +125,16 @@ export default function TopBar() {
 
                             <div className="flex-1 overflow-y-auto py-2 md:py-4">
                                 <nav className="space-y-1 md:space-y-2 px-2 md:px-4">
-                                    {menuItems.map((item) => (
+                                    {allMenuItems.map((item) => (
                                         <Link
                                             key={item.href}
                                             href={item.href}
                                             className={`
-                        flex items-center rounded-lg px-3 py-3 md:px-4 md:py-4
-                        text-sm md:text-base font-medium
-                        transition-colors hover:bg-white/10
-                        ${pathname === item.href ? 'text-[#00ff41]' : 'text-gray-300'}
-                      `}
+                                                flex items-center rounded-lg px-3 py-3 md:px-4 md:py-4
+                                                text-sm md:text-base font-medium
+                                                transition-colors hover:bg-white/10
+                                                ${pathname === item.href ? 'text-[#00ff41]' : 'text-gray-300'}
+                                            `}
                                             onClick={handleLinkClick}
                                         >
                                             <span>{item.label}</span>

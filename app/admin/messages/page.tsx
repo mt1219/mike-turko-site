@@ -21,7 +21,7 @@ interface ChatMessage {
     status: string;
     created_at: string;
     source: 'chat_bot';
-    name?: string;  // Add optional name for ChatMessage
+    name?: string;
 }
 
 type Message = ContactMessage | ChatMessage;
@@ -33,8 +33,15 @@ export default function AdminMessagesPage() {
     const [statusFilter, setStatusFilter] = useState<'all' | 'unread' | 'read' | 'replied'>('all');
     const [isAuthenticated, setIsAuthenticated] = useState(false);
     const [password, setPassword] = useState('');
+    const [authError, setAuthError] = useState('');
 
-    const ADMIN_PASSWORD = 'admin123'; // CHANGE THIS!
+    // Check if already authenticated (session stored)
+    useEffect(() => {
+        const auth = sessionStorage.getItem('admin_auth');
+        if (auth === 'true') {
+            setIsAuthenticated(true);
+        }
+    }, []);
 
     useEffect(() => {
         if (isAuthenticated) {
@@ -42,29 +49,36 @@ export default function AdminMessagesPage() {
         }
     }, [isAuthenticated]);
 
+    const handleLogin = async () => {
+        setAuthError('');
+
+        const response = await fetch('/api/admin/verify', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ password })
+        });
+
+        if (response.ok) {
+            sessionStorage.setItem('admin_auth', 'true');
+            setIsAuthenticated(true);
+        } else {
+            setAuthError('Invalid password');
+        }
+    };
+
     const fetchMessages = async () => {
         setLoading(true);
-        console.log('🔵 Fetching messages...');
 
-        // Fetch contact form messages
-        const { data: contactMessages, error: contactError } = await supabase
+        const { data: contactMessages } = await supabase
             .from('contact_messages')
             .select('*')
             .order('created_at', { ascending: false });
 
-        console.log('📧 Contact messages:', contactMessages);
-        if (contactError) console.error('Contact error:', contactError);
-
-        // Fetch chat bot messages
-        const { data: chatMessages, error: chatError } = await supabase
+        const { data: chatMessages } = await supabase
             .from('chat_messages')
             .select('*')
             .order('created_at', { ascending: false });
 
-        console.log('💬 Chat messages:', chatMessages);
-        if (chatError) console.error('Chat error:', chatError);
-
-        // Combine and add source labels
         const contactMsgs: ContactMessage[] = (contactMessages || []).map(m => ({
             ...m,
             source: 'contact_form' as const
@@ -77,8 +91,6 @@ export default function AdminMessagesPage() {
         }));
 
         const combined = [...contactMsgs, ...chatMsgs];
-        console.log('🔵 Combined messages:', combined);
-
         combined.sort((a, b) => new Date(b.created_at).getTime() - new Date(a.created_at).getTime());
 
         setMessages(combined);
@@ -136,15 +148,17 @@ export default function AdminMessagesPage() {
                         onChange={(e) => setPassword(e.target.value)}
                         className="w-full px-4 py-2 bg-gray-700 border border-gray-600 rounded-lg mb-4 text-white"
                         onKeyDown={(e) => {
-                            if (e.key === 'Enter' && password === ADMIN_PASSWORD) {
-                                setIsAuthenticated(true);
+                            if (e.key === 'Enter') {
+                                handleLogin();
                             }
                         }}
+                        autoFocus
                     />
+                    {authError && (
+                        <p className="text-red-400 text-sm mb-4">{authError}</p>
+                    )}
                     <button
-                        onClick={() => {
-                            if (password === ADMIN_PASSWORD) setIsAuthenticated(true);
-                        }}
+                        onClick={handleLogin}
                         className="w-full bg-[#00ff41] text-black py-2 rounded-lg font-semibold hover:bg-[#00cc33] transition"
                     >
                         Login
@@ -160,7 +174,6 @@ export default function AdminMessagesPage() {
     return (
         <div className="min-h-screen bg-gray-900 py-12">
             <div className="container mx-auto px-4 max-w-6xl">
-                {/* Header */}
                 <div className="flex justify-between items-center mb-8">
                     <div>
                         <h1 className="text-3xl font-bold text-white">Messages</h1>
@@ -168,12 +181,23 @@ export default function AdminMessagesPage() {
                             {unreadCount} unread {unreadCount === 1 ? 'message' : 'messages'}
                         </p>
                     </div>
-                    <button
-                        onClick={fetchMessages}
-                        className="px-4 py-2 bg-gray-800 text-white rounded-lg hover:bg-gray-700 transition"
-                    >
-                        Refresh
-                    </button>
+                    <div className="flex gap-3">
+                        <button
+                            onClick={() => {
+                                sessionStorage.removeItem('admin_auth');
+                                setIsAuthenticated(false);
+                            }}
+                            className="px-4 py-2 bg-gray-800 text-white rounded-lg hover:bg-gray-700 transition"
+                        >
+                            Logout
+                        </button>
+                        <button
+                            onClick={fetchMessages}
+                            className="px-4 py-2 bg-gray-800 text-white rounded-lg hover:bg-gray-700 transition"
+                        >
+                            Refresh
+                        </button>
+                    </div>
                 </div>
 
                 {/* Filters */}
@@ -235,7 +259,6 @@ export default function AdminMessagesPage() {
                                 className={`bg-gray-800/50 rounded-xl border p-5 transition ${msg.status === 'unread' ? 'border-[#00ff41]/50 shadow-lg shadow-[#00ff41]/5' : 'border-gray-700'
                                     }`}
                             >
-                                {/* Header */}
                                 <div className="flex justify-between items-start mb-3">
                                     <div className="flex items-center gap-3 flex-wrap">
                                         <span className="text-sm font-mono text-gray-400">#{msg.id}</span>
@@ -251,7 +274,6 @@ export default function AdminMessagesPage() {
                                     </div>
                                 </div>
 
-                                {/* Sender Info */}
                                 <div className="mb-3">
                                     <p className="text-white font-medium">
                                         {getDisplayName(msg)}
@@ -261,14 +283,12 @@ export default function AdminMessagesPage() {
                                     </p>
                                 </div>
 
-                                {/* Message Content */}
                                 <div className="bg-gray-900/50 rounded-lg p-3 mb-4">
                                     <p className="text-gray-300 whitespace-pre-wrap">
                                         {msg.message}
                                     </p>
                                 </div>
 
-                                {/* Actions */}
                                 <div className="flex gap-3">
                                     {msg.status !== 'read' && (
                                         <button
