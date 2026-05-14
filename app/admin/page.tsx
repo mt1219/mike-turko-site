@@ -1,10 +1,9 @@
-// app/admin/page.tsx
 'use client';
 
 import { useEffect, useState } from 'react';
 import { supabase } from '@/src/lib/supabase';
 import Link from 'next/link';
-import { Mail, MessageCircle, Settings, Send } from 'lucide-react';
+import { Mail, MessageCircle, LayoutDashboard, Send } from 'lucide-react';
 
 export default function AdminDashboard() {
     const [stats, setStats] = useState({
@@ -46,6 +45,8 @@ export default function AdminDashboard() {
             setAuthError('Invalid password');
         }
     };
+
+
 
     const fetchStats = async () => {
         setLoading(true);
@@ -92,7 +93,7 @@ export default function AdminDashboard() {
     }
 
     return (
-        <div className="min-h-screen bg-gray-900 py-18">
+        <div className="min-h-screen bg-gray-900 py-12">
             <div className="container mx-auto px-4 max-w-5xl">
                 <div className="flex justify-between items-center mb-8">
                     <h1 className="text-3xl font-bold text-white">Admin Dashboard</h1>
@@ -150,18 +151,13 @@ export default function AdminDashboard() {
                         >
                             View All Messages
                         </Link>
-                        <button
-                            disabled
-                            className="px-4 py-2 bg-gray-700 text-gray-500 rounded-lg cursor-not-allowed"
+                        <Link
+                            href="/admin/emails"
+                            className="px-4 py-2 bg-[#00ff41]/10 border border-[#00ff41] text-[#00ff41] rounded-lg hover:bg-[#00ff41]/20 transition"
                         >
-                            Send Email (Coming Soon)
-                        </button>
-                        <button
-                            disabled
-                            className="px-4 py-2 bg-gray-700 text-gray-500 rounded-lg cursor-not-allowed"
-                        >
-                            Settings (Coming Soon)
-                        </button>
+                            <Send className="h-4 w-4 inline mr-2" />
+                            Email System
+                        </Link>
                     </div>
                 </div>
             </div>
