@@ -12,7 +12,13 @@ export async function GET() {
     const adminEmail = process.env.ADMIN_EMAIL || "mturko@outlook.com";
 
     // Get today's date
-    const today = new Date().toISOString().split("T")[0];
+    //const today = new Date().toISOString().split("T")[0];
+
+    const today = new Date().toLocaleDateString("en-US", {
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+    });
 
     // Get messages from last 24 hours (using regular client for SELECT)
     const yesterday = new Date(Date.now() - 24 * 60 * 60 * 1000).toISOString();
