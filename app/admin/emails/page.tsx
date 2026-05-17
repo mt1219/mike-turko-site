@@ -226,7 +226,25 @@ export default function EmailAdminPage() {
     }
 
     if (loading) {
-        return <div className="p-6 text-white">Loading...</div>;
+        return (
+            <div className="min-h-screen bg-gray-900 py-8">
+                <div className="container mx-auto px-4 max-w-6xl">
+                    <div className="animate-pulse">
+                        <div className="h-8 bg-gray-800 rounded w-48 mb-6"></div>
+                        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                            <div className="lg:col-span-1 space-y-2">
+                                {[1, 2, 3, 4, 5].map(i => (
+                                    <div key={i} className="h-24 bg-gray-800 rounded-lg"></div>
+                                ))}
+                            </div>
+                            <div className="lg:col-span-2">
+                                <div className="h-96 bg-gray-800 rounded-xl"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        );
     }
 
     return (
