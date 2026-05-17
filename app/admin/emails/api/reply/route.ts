@@ -28,7 +28,7 @@ export async function POST(request: NextRequest) {
       console.log(`📧 Attempting to send email to: ${to}`);
 
       const { data: emailData, error: emailError } = await resend.emails.send({
-        from: "Mike Turko <onboarding@resend.dev>", // Use Resend's test domain for now
+        from: "Mike Turko <admin@miketurko.com>", // Use Resend's test domain for now
         to: [to],
         subject: subject,
         text: `${message}\n\n--\nMike Turko\nhttps://miketurko.com`,
