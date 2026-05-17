@@ -110,7 +110,7 @@ export default function AdminDashboard() {
 
                 {/* Stats Cards */}
                 <div className="grid md:grid-cols-2 gap-6 mb-10">
-                    <Link href="/admin/messages?source=contact_form" className="block">
+                    <Link href="/admin/emails?source=contact_form" className="block">
                         <div className="bg-gray-800 rounded-xl border border-gray-700 p-6 hover:border-[#00ff41]/50 transition">
                             <div className="flex items-center justify-between mb-4">
                                 <div className="p-3 bg-blue-500/20 rounded-lg">
@@ -125,7 +125,7 @@ export default function AdminDashboard() {
                         </div>
                     </Link>
 
-                    <Link href="/admin/messages?source=chat_bot" className="block">
+                    <Link href="/admin/emails?source=chat_bot" className="block">
                         <div className="bg-gray-800 rounded-xl border border-gray-700 p-6 hover:border-[#00ff41]/50 transition">
                             <div className="flex items-center justify-between mb-4">
                                 <div className="p-3 bg-green-500/20 rounded-lg">
@@ -146,7 +146,7 @@ export default function AdminDashboard() {
                     <h2 className="text-xl font-semibold text-white mb-4">Quick Actions</h2>
                     <div className="flex flex-wrap gap-4">
                         <Link
-                            href="/admin/messages"
+                            href="/admin/emails"
                             className="px-4 py-2 bg-gray-700 text-white rounded-lg hover:bg-gray-600 transition"
                         >
                             View All Messages
