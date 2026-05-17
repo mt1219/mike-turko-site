@@ -233,7 +233,7 @@ export default function EmailAdminPage() {
         <div className="min-h-screen bg-gray-900 py-8">
             <div className="container mx-auto px-4 max-w-6xl">
                 {/* Header */}
-                <div className="flex justify-between items-center mb-6">
+                <div className="flex justify-between items-center mb-6 mt-6">
                     <div className="flex items-center gap-4">
                         <button
                             onClick={() => router.push('/admin')}
