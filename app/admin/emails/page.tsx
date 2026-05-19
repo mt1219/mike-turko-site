@@ -30,7 +30,7 @@ export default function EmailAdminPage() {
     const [authError, setAuthError] = useState('');
 
     useEffect(() => {
-        const auth = sessionStorage.getItem('admin_emails_auth');
+        const auth = sessionStorage.getItem('admin_auth');
         if (auth === 'true') {
             setIsAuthenticated(true);
         }
@@ -51,7 +51,7 @@ export default function EmailAdminPage() {
         });
 
         if (response.ok) {
-            sessionStorage.setItem('admin_emails_auth', 'true');
+            sessionStorage.setItem('admin_auth', 'true');
             setIsAuthenticated(true);
         } else {
             setAuthError('Invalid password');
@@ -265,7 +265,7 @@ export default function EmailAdminPage() {
                     <div className="flex gap-3">
                         <button
                             onClick={() => {
-                                sessionStorage.removeItem('admin_emails_auth');
+                                sessionStorage.removeItem('admin_auth');
                                 setIsAuthenticated(false);
                             }}
                             className="px-4 py-2 bg-gray-800 text-white rounded-lg hover:bg-gray-700 transition"
