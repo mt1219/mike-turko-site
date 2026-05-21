@@ -4,6 +4,8 @@ import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { Menu, X } from 'lucide-react';
+import { trackClick } from '@/lib/track-clicks';
+
 
 // All menu items (for mobile dropdown)
 const allMenuItems = [
@@ -80,6 +82,13 @@ export default function TopBar() {
                                     <Link
                                         key={item.href}
                                         href={item.href}
+                                        onClick={() => {
+                                            trackClick(`nav_${item.label.toLowerCase().replace(/\s+/g, '_')}`, {
+                                                location: 'desktop_topbar',
+                                                destination: item.href,
+                                                timestamp: Date.now()
+                                            });
+                                        }}
                                         className={`transition text-gray-300 hover:text-white ${pathname === item.href ? 'text-[#00ff41]' : ''}`}
                                     >
                                         {item.label}
@@ -130,12 +139,19 @@ export default function TopBar() {
                                             key={item.href}
                                             href={item.href}
                                             className={`
-                                                flex items-center rounded-lg px-3 py-3 md:px-4 md:py-4
-                                                text-sm md:text-base font-medium
-                                                transition-colors hover:bg-white/10
-                                                ${pathname === item.href ? 'text-[#00ff41]' : 'text-gray-300'}
-                                            `}
-                                            onClick={handleLinkClick}
+            flex items-center rounded-lg px-3 py-3 md:px-4 md:py-4
+            text-sm md:text-base font-medium
+            transition-colors hover:bg-white/10
+            ${pathname === item.href ? 'text-[#00ff41]' : 'text-gray-300'}
+        `}
+                                            onClick={() => {
+                                                trackClick(`nav_mobile_${item.label.toLowerCase().replace(/\s+/g, '_')}`, {
+                                                    location: 'mobile_menu',
+                                                    destination: item.href,
+                                                    timestamp: Date.now()
+                                                });
+                                                setIsOpen(false);
+                                            }}
                                         >
                                             <span>{item.label}</span>
                                             {pathname === item.href && (

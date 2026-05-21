@@ -1,6 +1,8 @@
 // src/components/sections/Hero.tsx
 'use client';
 
+//import { trackClick } from "/../../src/lib/track-click";
+
 import { useState, useEffect, useRef } from 'react';
 import { Terminal } from 'lucide-react';
 import { staticCommands, actionButtons, generateHelpResponse } from '@/src/lib/terminal-commands';

@@ -6,6 +6,7 @@ import TopBar from '@/src/components/layout/TopBar';
 
 import ConditionalFooter from '@/src/components/layout/ConditionalFooter';
 import ChatWrapper from '@/src/components/chat/ChatWrapper';
+import ClientLayout from './ClientLayout';
 import './globals.css';
 
 const inter = Inter({
@@ -107,10 +108,12 @@ export default function RootLayout({
   return (
     <html lang="en" className="h-full">
       <body className={`${inter.variable} ${jetbrains.variable} h-full flex flex-col`}>
-        <TopBar />
-        <main className="flex-1">{children}</main>
-        <ConditionalFooter />
-        <ChatWrapper />
+        <ClientLayout>
+          <TopBar />
+          <main className="flex-1">{children}</main>
+          <ConditionalFooter />
+          <ChatWrapper />
+        </ClientLayout>
       </body>
     </html>
   );
