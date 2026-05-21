@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react';
 import { supabase } from '@/src/lib/supabase';
 import Link from 'next/link';
-import { Mail, MessageCircle, LayoutDashboard, Send } from 'lucide-react';
+import { Mail, MessageCircle, LayoutDashboard, Send, BarChart3 } from 'lucide-react';
 
 export default function AdminDashboard() {
     const [stats, setStats] = useState({
@@ -136,6 +136,20 @@ export default function AdminDashboard() {
                             <h3 className="text-lg font-semibold text-white mb-1">Chat Bot</h3>
                             <p className="text-gray-400 text-sm">
                                 {stats.chatUnread} unread messages
+                            </p>
+                        </div>
+                    </Link>
+
+                    <Link href="/admin/tracking" className="block">
+                        <div className="bg-gray-800 rounded-xl border border-gray-700 p-6 hover:border-[#00ff41]/50 transition">
+                            <div className="flex items-center justify-between mb-4">
+                                <div className="p-3 bg-purple-500/20 rounded-lg">
+                                    <BarChart3 className="w-6 h-6 text-purple-400" />
+                                </div>
+                            </div>
+                            <h3 className="text-lg font-semibold text-white mb-1">Tracking Analytics</h3>
+                            <p className="text-gray-400 text-sm">
+                                Button clicks & page views
                             </p>
                         </div>
                     </Link>
