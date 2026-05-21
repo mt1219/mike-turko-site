@@ -12,7 +12,7 @@ const allMenuItems = [
     { label: 'Home', href: '/' },
     { label: 'Triathlon Calc', href: '/triathlon-calculator' },
     { label: 'Contact', href: '/contact' },
-    { label: 'Admin', href: '/admin' },
+    //{ label: 'Admin', href: '/admin' },
 ];
 
 // Only show these on desktop (outside hamburger)

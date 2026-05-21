@@ -13,10 +13,40 @@ export default function MikeTrackingPage() {
     const [days, setDays] = useState(30);
     const [loading, setLoading] = useState(true);
     const [data, setData] = useState<any>(null);
+    const [isAuthenticated, setIsAuthenticated] = useState(false);
+    const [password, setPassword] = useState('');
+    const [authError, setAuthError] = useState('');
 
+    // Check auth on mount
     useEffect(() => {
-        fetchData();
-    }, [days]);
+        const auth = sessionStorage.getItem('admin_auth');
+        if (auth === 'true') {
+            setIsAuthenticated(true);
+        }
+    }, []);
+
+    // Fetch data when authenticated
+    useEffect(() => {
+        if (isAuthenticated) {
+            fetchData();
+        }
+    }, [days, isAuthenticated]);
+
+    const handleLogin = async () => {
+        setAuthError('');
+        const response = await fetch('/api/admin/verify', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ password })
+        });
+
+        if (response.ok) {
+            sessionStorage.setItem('admin_auth', 'true');
+            setIsAuthenticated(true);
+        } else {
+            setAuthError('Invalid password');
+        }
+    };
 
     const fetchData = async () => {
         setLoading(true);
@@ -55,6 +85,35 @@ export default function MikeTrackingPage() {
         setLoading(false);
     };
 
+    // Show login screen if not authenticated
+    if (!isAuthenticated) {
+        return (
+            <div className="min-h-screen flex items-center justify-center bg-gray-900">
+                <div className="bg-gray-800 p-6 rounded-xl shadow-md w-96 border border-gray-700">
+                    <h2 className="text-xl font-bold mb-4 text-white">Admin Access</h2>
+                    <input
+                        type="password"
+                        placeholder="Enter password"
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
+                        className="w-full px-4 py-2 bg-gray-700 border border-gray-600 rounded-lg mb-4 text-white"
+                        onKeyDown={(e) => {
+                            if (e.key === 'Enter') handleLogin();
+                        }}
+                        autoFocus
+                    />
+                    {authError && <p className="text-red-400 text-sm mb-4">{authError}</p>}
+                    <button
+                        onClick={handleLogin}
+                        className="w-full bg-[#00ff41] text-black py-2 rounded-lg font-semibold hover:bg-[#00cc33] transition"
+                    >
+                        Login
+                    </button>
+                </div>
+            </div>
+        );
+    }
+
     if (loading || !data) {
         return <div className="min-h-screen bg-gray-900 flex items-center justify-center">
             <div className="text-white">Loading tracking data...</div>
@@ -63,8 +122,7 @@ export default function MikeTrackingPage() {
 
     return (
         <div className="min-h-screen bg-gray-900 py-8">
-            <div className="container mx-auto px-4 max-w-7xl mt-6">
-                {/* Header */}
+            <div className="container mx-auto px-4 max-w-7xl">
                 <div className="mb-6">
                     <Link href="/admin" className="inline-flex items-center gap-2 text-gray-400 hover:text-[#00ff41] transition">
                         <ArrowLeft className="w-4 h-4" />
