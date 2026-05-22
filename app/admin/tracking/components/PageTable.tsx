@@ -14,7 +14,7 @@ export default function PageTable({ data }: { data: { path: string; views: numbe
     }
 
     return (
-        <div className="bg-gray-800 rounded-lg border border-gray-700">
+        <div className="bg-gray-800 rounded-lg border border-gray-700 h-fit">
             <h2 className="font-semibold p-4 border-b border-gray-700 text-white">Page Data</h2>
             <div className="overflow-x-auto">
                 <table className="w-full">
