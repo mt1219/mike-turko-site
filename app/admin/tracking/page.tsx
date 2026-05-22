@@ -89,7 +89,7 @@ export default function MikeTrackingPage() {
     if (!isAuthenticated) {
         return (
             <div className="min-h-screen flex items-center justify-center bg-gray-900">
-                <div className="bg-gray-800 p-6 rounded-xl shadow-md w-96 border border-gray-700">
+                <div className="bg-gray-800 p-6 rounded-xl shadow-md w-96 border border-gray-700 pt-6">
                     <h2 className="text-xl font-bold mb-4 text-white">Admin Access</h2>
                     <input
                         type="password"
@@ -122,7 +122,7 @@ export default function MikeTrackingPage() {
 
     return (
         <div className="min-h-screen bg-gray-900 py-8">
-            <div className="container mx-auto px-4 max-w-7xl">
+            <div className="container mx-auto px-4 max-w-7xl pt-12">
                 <div className="mb-6">
                     <Link href="/admin" className="inline-flex items-center gap-2 text-gray-400 hover:text-[#00ff41] transition">
                         <ArrowLeft className="w-4 h-4" />
