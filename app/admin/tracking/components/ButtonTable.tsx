@@ -1,4 +1,7 @@
 export default function ButtonTable({ data }: { data: { name: string; clicks: number }[] }) {
+    // Filter out page_view from the button data
+    const filteredData = data.filter(btn => btn.name !== 'page_view');
+
     return (
         <div className="bg-gray-800 rounded-lg border border-gray-700 mb-8">
             <h2 className="font-semibold p-4 border-b border-gray-700 text-white">Button Data</h2>
@@ -11,7 +14,7 @@ export default function ButtonTable({ data }: { data: { name: string; clicks: nu
                         </tr>
                     </thead>
                     <tbody className="divide-y divide-gray-700">
-                        {data.map((row) => (
+                        {filteredData.map((row) => (
                             <tr key={row.name} className="hover:bg-gray-700/50">
                                 <td className="px-4 py-2 text-sm text-white font-mono">{row.name}</td>
                                 <td className="px-4 py-2 text-sm text-white">{row.clicks}</td>

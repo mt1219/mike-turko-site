@@ -53,11 +53,16 @@ export default function MikeTrackingPage() {
         const res = await fetch(`/api/mike-tracking?days=${days}`);
         const { clicks } = await res.json();
 
+        // Separate page views from button clicks
+        const pageViewsData = clicks?.filter((c: any) => c.button_name === 'page_view') || [];
+        const buttonClicks = clicks?.filter((c: any) => c.button_name !== 'page_view') || [];
+
         const buttonMap = new Map<string, number>();
         const pageMap = new Map<string, number>();
         const dailyMap = new Map<string, number>();
 
-        clicks?.forEach((click: any) => {
+        // Process ONLY button clicks (not page views) for daily and button stats
+        buttonClicks.forEach((click: any) => {
             const date = new Date(click.created_at).toISOString().split('T')[0];
             dailyMap.set(date, (dailyMap.get(date) || 0) + 1);
             buttonMap.set(click.button_name, (buttonMap.get(click.button_name) || 0) + 1);
@@ -76,8 +81,8 @@ export default function MikeTrackingPage() {
             .map(([date, clicks]) => ({ date, clicks }))
             .sort((a, b) => b.date.localeCompare(a.date));
 
-        const totalClicks = clicks?.length || 0;
-        const pageViews = clicks?.filter((c: any) => c.button_name === 'page_view').length || 0;
+        const totalClicks = buttonClicks.length;
+        const pageViews = pageViewsData.length;
         const uniqueButtons = buttonMap.size;
         const avgClicksPerDay = Math.round(totalClicks / days);
 
