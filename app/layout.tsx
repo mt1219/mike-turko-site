@@ -40,8 +40,8 @@ export const metadata: Metadata = {
     "canine welfare",
     "designer developer",
     "casual triathlete",
-    "triathlon find your time",
-    "pdf to text tool"
+    "triathlon time calculator",
+    "pdf to text converter"
   ],
 
   authors: [{ name: "Mike Turko" }],
