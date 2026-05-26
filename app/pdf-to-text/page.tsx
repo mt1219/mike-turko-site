@@ -5,6 +5,70 @@ import PageHero from '@/src/components/ui/PageHero';
 import { FileTextIcon } from 'lucide-react';
 import { trackClick } from '@/lib/track-clicks';
 
+const cleanText = (text: string): string => {
+    return text
+        // Curly quotes → straight quotes
+        .replace(/[\u2018\u2019]/g, "'")
+        .replace(/[\u201C\u201D]/g, '"')
+        // Dashes
+        .replace(/\u2013/g, '-')
+        .replace(/\u2014/g, '--')
+        // Ellipsis
+        .replace(/\u2026/g, '...')
+        // Bullet points
+        .replace(/\u2022/g, '-')
+        .replace(/\u2023/g, '-')
+        .replace(/\u2043/g, '-')
+        // Non-breaking space → regular space
+        .replace(/\u00A0/g, ' ')
+        // Replacement character (garbage)
+        .replace(/\uFFFD/g, '')
+        // Windows-1252 gremlins that sneak through
+        .replace(/\u0080/g, '')
+        .replace(/\u0082/g, ',')
+        .replace(/\u0083/g, 'f')
+        .replace(/\u0084/g, '"')
+        .replace(/\u0085/g, '...')
+        .replace(/\u0086/g, '+')
+        .replace(/\u0087/g, '++')
+        .replace(/\u0088/g, '^')
+        .replace(/\u0089/g, '%')
+        .replace(/\u008A/g, 'S')
+        .replace(/\u008B/g, '<')
+        .replace(/\u008C/g, 'OE')
+        .replace(/\u008E/g, 'Z')
+        .replace(/\u0091/g, "'")
+        .replace(/\u0092/g, "'")
+        .replace(/\u0093/g, '"')
+        .replace(/\u0094/g, '"')
+        .replace(/\u0095/g, '-')
+        .replace(/\u0096/g, '-')
+        .replace(/\u0097/g, '--')
+        .replace(/\u0098/g, '~')
+        .replace(/\u0099/g, 'TM')
+        .replace(/\u009A/g, 's')
+        .replace(/\u009B/g, '>')
+        .replace(/\u009C/g, 'oe')
+        .replace(/\u009E/g, 'z')
+        .replace(/\u009F/g, 'Y')
+        // Trademark, copyright, registered
+        .replace(/\u2122/g, 'TM')
+        .replace(/\u00AE/g, '(R)')
+        .replace(/\u00A9/g, '(C)')
+        // Ligatures
+        .replace(/\uFB00/g, 'ff')
+        .replace(/\uFB01/g, 'fi')
+        .replace(/\uFB02/g, 'fl')
+        .replace(/\uFB03/g, 'ffi')
+        .replace(/\uFB04/g, 'ffl')
+        // Collapse multiple spaces
+        .replace(/ {2,}/g, ' ')
+        // Trim lines
+        .split('\n').map(line => line.trim()).join('\n')
+        // Collapse 3+ blank lines into 2
+        .replace(/\n{3,}/g, '\n\n');
+};
+
 export default function PdfToTextPage() {
     const [isDragging, setIsDragging] = useState(false);
     const [file, setFile] = useState<File | null>(null);
@@ -52,23 +116,19 @@ export default function PdfToTextPage() {
             fileSizeMB: parseFloat((file.size / 1024 / 1024).toFixed(2)),
             timestamp: Date.now()
         });
+
         setStatus('loading');
         setProgress(0);
         setExtractedText('');
         setErrorMsg('');
 
         try {
-            // Dynamically import pdfjs-dist (client-side only)
             const pdfjsLib = await import('pdfjs-dist');
 
-            // Set worker source — adjust path if needed based on your Next.js setup
-            // Set worker source — adjust path if needed based on your Next.js setup
             pdfjsLib.GlobalWorkerOptions.workerSrc = new URL(
                 'pdfjs-dist/build/pdf.worker.min.mjs',
                 import.meta.url
             ).toString();
-
-
 
             const arrayBuffer = await file.arrayBuffer();
             const pdf = await pdfjsLib.getDocument({ data: arrayBuffer }).promise;
@@ -88,7 +148,7 @@ export default function PdfToTextPage() {
                 setProgress(Math.round((i / total) * 100));
             }
 
-            setExtractedText(fullText.trim());
+            setExtractedText(cleanText(fullText.trim()));
             setStatus('done');
         } catch (err: any) {
             console.error(err);
