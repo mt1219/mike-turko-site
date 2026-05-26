@@ -2,19 +2,25 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://miketurko.com/</loc>
-    <lastmod>2025-05-14</lastmod>
+    <lastmod>2025-05-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.00</priority>
   </url>
   <url>
     <loc>https://miketurko.com/triathlon-calculator</loc>
-    <lastmod>2025-05-14</lastmod>
+    <lastmod>2025-05-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://miketurko.com/pdf-to-text</loc>
+    <lastmod>2025-05-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.80</priority>
   </url>
   <url>
     <loc>https://miketurko.com/contact</loc>
-    <lastmod>2025-05-14</lastmod>
+    <lastmod>2025-05-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.80</priority>
   </url>
