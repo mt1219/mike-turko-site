@@ -18,7 +18,7 @@ export default function AdminDashboard() {
     const [authError, setAuthError] = useState('');
 
     useEffect(() => {
-        const auth = sessionStorage.getItem('admin_auth');
+        const auth = localStorage.getItem('admin_auth');
         if (auth === 'true') {
             setIsAuthenticated(true);
         }
@@ -39,7 +39,7 @@ export default function AdminDashboard() {
         });
 
         if (response.ok) {
-            sessionStorage.setItem('admin_auth', 'true');
+            localStorage.setItem('admin_auth', 'true');
             setIsAuthenticated(true);
         } else {
             setAuthError('Invalid password');
@@ -99,7 +99,7 @@ export default function AdminDashboard() {
                     <h1 className="text-3xl font-bold text-white">Admin Dashboard</h1>
                     <button
                         onClick={() => {
-                            sessionStorage.removeItem('admin_auth');
+                            localStorage.removeItem('admin_auth');
                             setIsAuthenticated(false);
                         }}
                         className="px-4 py-2 bg-gray-800 text-white rounded-lg hover:bg-gray-700 transition"

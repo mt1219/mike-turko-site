@@ -19,7 +19,7 @@ export default function MikeTrackingPage() {
 
     // Check auth on mount
     useEffect(() => {
-        const auth = sessionStorage.getItem('admin_auth');
+        const auth = localStorage.getItem('admin_auth');
         if (auth === 'true') {
             setIsAuthenticated(true);
         }
@@ -41,7 +41,7 @@ export default function MikeTrackingPage() {
         });
 
         if (response.ok) {
-            sessionStorage.setItem('admin_auth', 'true');
+            localStorage.setItem('admin_auth', 'true');
             setIsAuthenticated(true);
         } else {
             setAuthError('Invalid password');
