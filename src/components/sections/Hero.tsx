@@ -138,7 +138,7 @@ export default function Hero() {
                             </div>
                             <div className="flex items-center space-x-2 text-[#00ff41] text-[10px] sm:text-sm">
                                 <Terminal size={12} className="sm:w-4 sm:h-4" />
-                                <span className="green-glow">mike@turko:~/portfolio$$</span>
+                                <span className="green-glow">mike@turko:~/portfolio$</span>
                             </div>
                             <div className="w-8 sm:w-16"></div>
                         </div>
