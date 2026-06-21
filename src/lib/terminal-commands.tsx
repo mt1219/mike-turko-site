@@ -116,7 +116,13 @@ export const staticCommands: Command[] = [
           — the dogs with mismatched ears, surprising color patterns, and personalities that defy description.
           Each one tells a unique story, and we wanted to create a place where those stories could shine.
           <br /><br />
-          🔗 <a href="https://worldcanineunion.org" target="_blank" rel="noopener noreferrer" className="text-[#00ff41] hover:underline">Visit World Canine Union →</a>
+          When you give your dog a <span className="font-bold">Forever Page</span> on{" "}
+          <a href="https://mydogforever.com" target="_blank" rel="noopener noreferrer" className="text-[#00ff41] font-bold hover:underline">
+            MyDogForever.com →
+          </a>
+          , they receive a Forever Page that celebrates who they are today — and a candle-lit memorial page when the time comes — along with a permanent World Canine Union membership and official WCU certificate.
+          <br /><br />
+          🔗 <a href="https://worldcanineunion.com" target="_blank" rel="noopener noreferrer" className="text-[#00ff41] hover:underline">Visit World Canine Union →</a>
         </div>
       )
     }
