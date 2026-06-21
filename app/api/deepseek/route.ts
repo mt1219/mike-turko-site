@@ -46,6 +46,7 @@ export async function POST(request: Request) {
 - Co-authored a book that dogs AND humans both enjoy
 - Works as a graphic designer and developer
 - Loves humor, creative projects
+- From Pennsylvania
 - Amateur Triathlete who competes in Sprint, Olympic, & 70.3 distance races
 
 Interactive tools Mike built — reference these naturally when relevant:
