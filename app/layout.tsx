@@ -25,6 +25,7 @@ export const metadata: Metadata = {
 
   keywords: [
     "Mike Turko",
+    "my dog forever",
     "graphic designer",
     "full-stack developer",
     "children's book author",

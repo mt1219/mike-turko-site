@@ -31,7 +31,7 @@ export const staticCommands: Command[] = [
           <div>🖥️ HTML/CSS/Tailwind — Hand-coded, responsive, no framework drama</div>
           <div>🤖 AI Integration — DeepSeek API. JavaScript? Barely. Let the AI do the work.</div>
           <div>🏊‍♂️🚴‍♂️🏃‍♂️ Triathlete — Podium? Never heard of her. Finish line? Yes.</div>
-          <div>☕ Professional Coffee Drinker — The real expertise</div>
+          <div>☕ Professional Coffee Drinker — My dental hygienist can confirm</div>
           <div className="text-gray-500 text-xs mt-2">⚠️ Next.js/React? I use it when I have to. This site is the exception, not the rule.</div>
         </div>
       )
@@ -51,16 +51,23 @@ export const staticCommands: Command[] = [
             🔗 <a href="https://tobythestorydog.com" target="_blank" rel="noopener noreferrer" className="text-[#00ff41] hover:underline">tobythestorydog.com →</a>
           </div>
           <div>
+            🐾 <span className="text-[#00ff41] font-bold">MyDogForever</span>
+            <br />
+            A Forever Page for every dog — living profile, candle-lit memorial, and official World Canine Union membership and certificate.
+            <br />
+            🔗 <a href="https://mydogforever.com" target="_blank" rel="noopener noreferrer" className="text-[#00ff41] hover:underline">mydogforever.com →</a>
+          </div>
+          <div>
             🐕 <span className="text-[#00ff41] font-bold">World Canine Union</span>
             <br />
-            A modern dog registry celebrating mixed breeds and rescues. Every dog deserves to be celebrated.
+            The official membership registry and certificate authority behind MyDogForever. Every dog that joins gets a permanent WCU membership and a printable certificate.
             <br />
-            🔗 <a href="https://worldcanineunion.org" target="_blank" rel="noopener noreferrer" className="text-[#00ff41] hover:underline">worldcanineunion.org →</a>
+            🔗 <a href="https://worldcanineunion.com" target="_blank" rel="noopener noreferrer" className="text-[#00ff41] hover:underline">worldcanineunion.com →</a>
           </div>
           <div>
             💼 <span className="text-[#00ff41] font-bold">Freelance Development</span>
             <br />
-            Laravel, PHP, custom web applications. Available for hire — let's build something.
+            Laravel, PHP, Next.js, custom web applications. Available for hire — let's build something.
             <br />
             📧 Use the chat button to reach me.
           </div>
