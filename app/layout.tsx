@@ -21,7 +21,7 @@ const jetbrains = JetBrains_Mono({
 
 export const metadata: Metadata = {
   title: "Mike Turko — Graphic Designer, Developer & Children's Book Creator",
-  description: "Graphic designer, full-stack developer, creator of World Canine Union — a mixed-breed dog registry that celebrates your dog, now and forever. Co-author of 'Toby Adopts a Hooman', a book you read to your dog.",
+  description: "Graphic designer, full-stack developer, creator of: World Canine Union — a mixed-breed dog registry, MyDogForever — A Forever Profile Page for every dog, co-author of 'Toby Adopts a Hooman', a book you read to your dog.",
 
   keywords: [
     "Mike Turko",
