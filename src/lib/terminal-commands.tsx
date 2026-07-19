@@ -64,6 +64,7 @@ export const staticCommands: Command[] = [
             <br />
             🔗 <a href="https://worldcanineunion.com" target="_blank" rel="noopener noreferrer" className="text-[#00ff41] hover:underline">worldcanineunion.com →</a>
           </div>
+          {/*
           <div>
             💼 <span className="text-[#00ff41] font-bold">Freelance Development</span>
             <br />
@@ -71,6 +72,7 @@ export const staticCommands: Command[] = [
             <br />
             📧 Use the chat button to reach me.
           </div>
+          */}
         </div>
       )
     }
