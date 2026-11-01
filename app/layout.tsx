@@ -24,9 +24,11 @@ export const metadata: Metadata = {
   description: "Graphic designer, full-stack developer, creator of: World Canine Union — a mixed-breed dog registry, MyDogForever — A Forever Profile Page for every dog, co-author of 'Toby Adopts a Hooman', a book you read to your dog.",
 
   keywords: [
-    "Mike Turko",
+    "mike turko",
     "michael turko",
+    "marsh mclennan",
     "my dog forever",
+    "linkedin",
     "graphic designer",
     "full-stack developer",
     "children's book author",
