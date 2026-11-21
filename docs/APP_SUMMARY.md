@@ -35,7 +35,7 @@ Top bar: Transparent at top, solid black on scroll
 /admin/messages - View and manage contact form + chat messages
 /admin/emails - Email system for replying to messages
 
---- Terminal Commands ---
+--- Terminal Commands deploy test---
 
 whoami - About Mike Turko
 skills - Skills and expertise (PHP/Laravel, graphic design, etc.)
